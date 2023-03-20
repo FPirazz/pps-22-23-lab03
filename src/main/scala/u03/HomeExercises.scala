@@ -3,7 +3,7 @@ package u03
 object HomeExercises extends App:
 
   //Exercise 1
-  //Point a, b
+  //Point a, b, c
 
   enum List[E]:
     case Cons(head: E, tail: List[E])
@@ -28,3 +28,6 @@ object HomeExercises extends App:
       case (Cons(h, Nil()), right) => Cons(h, right)
       case (Cons(_, _), Nil()) => left
       case (Cons(h1, t1), Cons(h2, t2)) => Cons(h1, append(t1, Cons(h2, t2)))
+    def flatMap[A,B](l: List[A])(f: A => List[B]): List[B] = (l, f) match
+      case (Cons(h, Nil()), f) => f(h)
+      case (Cons(h, t), f) => append(f(h), flatMap(t)(f))
