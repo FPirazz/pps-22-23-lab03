@@ -1,4 +1,4 @@
-[warn] scala3-library_3-3.2.2-sources.jar no longer exists at \home\gianluca\.cache\coursier\v1\https\repo1.maven.org\maven2\org\scala-lang\scala3-library_3\3.2.2\scala3-library_3-3.2.2-sources.jar
+[warn] junit-interface-0.13.3-sources.jar no longer exists at C:\Users\kryas\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\com\github\sbt\junit-interface\0.13.3\junit-interface-0.13.3-sources.jar
 [debug] not up to date. inChanged = false, force = false
-[debug] Updating ProjectRef(uri("file:/C:/Users/kryas/Desktop/Universita/PdPeS%20-%20Viroli/pps-22-23-lab03/"), "root")...
-[debug] Done updating ProjectRef(uri("file:/C:/Users/kryas/Desktop/Universita/PdPeS%20-%20Viroli/pps-22-23-lab03/"), "root")
+[debug] Updating ProjectRef(uri("file:/C:/Users/kryas/Desktop/Exercises/Magistrale/PdPeS%20-%20Viroli/pps-22-23-lab03/"), "root")...
+[debug] Done updating ProjectRef(uri("file:/C:/Users/kryas/Desktop/Exercises/Magistrale/PdPeS%20-%20Viroli/pps-22-23-lab03/"), "root")

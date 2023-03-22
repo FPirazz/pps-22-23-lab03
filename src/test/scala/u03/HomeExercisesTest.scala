@@ -11,9 +11,9 @@ class HomeExercisesTest:
   val lst = Cons(10, Cons(20, Cons(30, Nil())))
   @Test
   def testDropList() =
-    assertEquals(Cons(20, Cons(30, Nil ())), drop(lst, 1)) // Cons (20 , Cons (30 , Nil ()))
-    assertEquals(Cons(30, Nil()), drop(lst, 2)) // Cons (30 , Nil ())
-    assertEquals(Nil(), drop(lst, 5)) // Nil ()
+    assertEquals(Cons(20, Cons(30, Nil ())), drop(lst, 1)) // Cons (20, Cons (30, Nil()))
+    assertEquals(Cons(30, Nil()), drop(lst, 2)) // Cons (30, Nil())
+    assertEquals(Nil(), drop(lst, 5)) // Nil()
 
   //Point b
   @Test
@@ -29,4 +29,11 @@ class HomeExercisesTest:
     assertEquals(Cons(11, Cons(12, Cons(21, Cons(22, Cons(31, Cons(32, Nil())))))), flatMap(lst)(v => Cons(v + 1, Cons(v + 2, Nil()))))
     // Cons(11, Cons(12, Cons(21, Cons(22, Cons(31, Cons(32, Nil()))))))
 
+  //Exercise 2
+  @Test
+  def testMax() =
+    import HomeExercises.max
+    import HomeExercises.Option.*
+    assertEquals(Some (25), max(Cons(10, Cons(25, Cons(20, Nil()))))) // Some(25)
+    assertEquals(None(), max(Nil())) // None()
 
