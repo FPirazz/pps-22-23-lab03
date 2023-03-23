@@ -36,3 +36,14 @@ class HomeExercisesTest:
     import HomeExercises.Option.*
     assertEquals(Some (25), max(Cons(10, Cons(25, Cons(20, Nil()))))) // Some(25)
     assertEquals(None(), max(Nil())) // None()
+
+  //Exercise 4
+  @Test
+  def testFolds() =
+    import HomeExercises.foldLeft
+    import HomeExercises.foldRight
+    val lst = Cons(3, Cons(7, Cons(1, Cons(5, Nil()))))
+    assertEquals(-16, foldLeft(lst)(0)(_ - _)) // -16
+    assertEquals(-15, foldLeft(lst)(1)(_ - _)) // -16
+    assertEquals(-8, foldRight(lst)(0)(_ - _)) // -8
+    assertEquals(-7, foldRight(lst)(1)(_ - _)) // -8

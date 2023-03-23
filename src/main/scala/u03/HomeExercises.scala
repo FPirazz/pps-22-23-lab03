@@ -57,7 +57,7 @@ object HomeExercises extends App:
       case (Cons(_, _), Nil()) => left
       case (Cons(h1, t1), Cons(h2, t2)) => Cons(h1, append(t1, Cons(h2, t2)))
     //Point c, sviluppato con Nediani
-    def flatMap[A,B](l: List[A])(f: A => List[B]): List[B] = (l, f) match
+    def flatMap[A, B](l: List[A])(f: A => List[B]): List[B] = (l, f) match
       case (Cons(h, Nil()), f) => f(h)
       case (Cons(h, t), f) => append(f(h), flatMap(t)(f))
 
@@ -68,3 +68,11 @@ object HomeExercises extends App:
     case Nil() => None()
     case Cons(h, Nil()) => Some(h)
     case Cons(h1, Cons(h2, t2)) => if h1 > h2 then max(Cons(h1, t2)) else max(Cons(h2, t2))
+
+  //Exercise 4
+  def foldLeft[A](l: List[A])(df: A)(f: (A, A) => A): A = l match
+    case Cons(h, Nil()) => f(df, h)
+    case Cons(h, t) => foldLeft(t)(f(df, h))(f)
+  def foldRight[A](l: List[A])(df: A)(f: (A, A) => A): A = l match
+    case Cons(h, Nil()) => f(h, df)
+    case Cons(h, t) => f(h, foldRight(t)(df)(f))
