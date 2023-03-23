@@ -36,4 +36,3 @@ class HomeExercisesTest:
     import HomeExercises.Option.*
     assertEquals(Some (25), max(Cons(10, Cons(25, Cons(20, Nil()))))) // Some(25)
     assertEquals(None(), max(Nil())) // None()
-

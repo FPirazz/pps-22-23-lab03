@@ -20,6 +20,15 @@ object HomeExercises extends App:
       case _ => None()
 
 
+  enum Person:
+    case Student(name: String, year: Int)
+    case Teacher(name: String, course: String)
+  object Person:
+    def name(p: Person): String = p match
+      case Student(n, _) => n
+      case Teacher(n, _) => n
+
+
   enum List[E]:
     case Cons(head: E, tail: List[E])
     case Nil()
@@ -36,35 +45,26 @@ object HomeExercises extends App:
       case Cons(_, t) => filter(t)(pred)
       case Nil() => Nil()
     //Exercise 1
-    //Point a
+    //Point a, sviluppato con Nediani
+    @tailrec
     def drop[A](l: List[A], n: Int): List[A] = (l, n) match
       case (Nil(), _) => Nil()
       case (Cons(_, t), 1) => t
       case (Cons(_, t), n) => drop(t, n-1)
-    //Point b
+    //Point b, sviluppato con Nediani
     def append[A](left: List[A], right: List[A]): List[A] = (left, right) match
       case (Cons(h, Nil()), right) => Cons(h, right)
       case (Cons(_, _), Nil()) => left
       case (Cons(h1, t1), Cons(h2, t2)) => Cons(h1, append(t1, Cons(h2, t2)))
-    //Point c
+    //Point c, sviluppato con Nediani
     def flatMap[A,B](l: List[A])(f: A => List[B]): List[B] = (l, f) match
       case (Cons(h, Nil()), f) => f(h)
       case (Cons(h, t), f) => append(f(h), flatMap(t)(f))
 
   //Exercise 2
-  import Option.*
-  import List.*
-  def max(l: List[Int]): Option[Int] =
-    @tailrec
-    def findMax(l: List[Int], max: Int): Option[Int] = l match
-      case Nil() => None()
-      case Cons(_, Nil()) => Some(max)
-      case Cons(h, t) => findMax(t, if(h > max) h else max )
-    findMax(l, 0)
-
-
-
-
-
-
-
+  import HomeExercises.Option.*
+  import HomeExercises.List.*
+  def max(l: List[Int]): Option[Int] = l match
+    case Nil() => None()
+    case Cons(h, Nil()) => Some(h)
+    case Cons(h1, Cons(h2, t2)) => if h1 > h2 then max(Cons(h1, t2)) else max(Cons(h2, t2))
