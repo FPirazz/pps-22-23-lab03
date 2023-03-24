@@ -53,6 +53,7 @@ object HomeExercises extends App:
       case (Cons(_, t), n) => drop(t, n-1)
     //Point b, sviluppato con Nediani
     def append[A](left: List[A], right: List[A]): List[A] = (left, right) match
+      case (Nil(), _) => right
       case (Cons(h, Nil()), right) => Cons(h, right)
       case (Cons(_, _), Nil()) => left
       case (Cons(h1, t1), Cons(h2, t2)) => Cons(h1, append(t1, Cons(h2, t2)))
