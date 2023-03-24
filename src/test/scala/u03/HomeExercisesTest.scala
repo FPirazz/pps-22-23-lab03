@@ -29,6 +29,7 @@ class HomeExercisesTest:
     assertEquals(Cons(11, Cons(12, Cons(21, Cons(22, Cons(31, Cons(32, Nil())))))), flatMap(lst)(v => Cons(v + 1, Cons(v + 2, Nil()))))
     // Cons(11, Cons(12, Cons(21, Cons(22, Cons(31, Cons(32, Nil()))))))
 
+
   //Exercise 2
   @Test
   def testMax() =
@@ -37,7 +38,18 @@ class HomeExercisesTest:
     assertEquals(Some (25), max(Cons(10, Cons(25, Cons(20, Nil()))))) // Some(25)
     assertEquals(None(), max(Nil())) // None()
 
-  //Exercise 4
+
+  //Exercise 3
+  @Test
+  def testCourses() =
+    import HomeExercises.Person.*
+    import HomeExercises.courses
+    assertEquals(Cons("LCMC", Cons("Cybersecurity", Nil())), courses(Cons(Teacher("Mario", "LCMC"), Cons(Student("Luca", 1), Cons(Teacher("Gabriele", "Cybersecurity"), Nil()))))) // Cons("LCMC", Cons("Cybersecurity", Nil()))
+    assertEquals(Nil(), courses(Nil())) // Nil()
+    assertEquals(Nil(), courses(Cons(Student("Luca", 1), Nil()))) // Nil()
+
+
+//Exercise 4
   @Test
   def testFolds() =
     import HomeExercises.foldLeft

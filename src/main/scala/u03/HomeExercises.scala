@@ -62,6 +62,7 @@ object HomeExercises extends App:
       case (Cons(h, Nil()), f) => f(h)
       case (Cons(h, t), f) => append(f(h), flatMap(t)(f))
 
+
   //Exercise 2
   import HomeExercises.Option.*
   import HomeExercises.List.*
@@ -69,6 +70,17 @@ object HomeExercises extends App:
     case Nil() => None()
     case Cons(h, Nil()) => Some(h)
     case Cons(h1, Cons(h2, t2)) => if h1 > h2 then max(Cons(h1, t2)) else max(Cons(h2, t2))
+
+
+  //Exercise 3
+  import HomeExercises.Person.*
+  def courses(l: List[Person]): List[String] = l match
+    case Nil() => Nil()
+    case _ => List.flatMap(l)(p => p match
+      case Teacher(_, c) => Cons(c, Nil())
+      case _ => Nil()
+    )
+
 
   //Exercise 4
   def foldLeft[A](l: List[A])(df: A)(f: (A, A) => A): A = l match
