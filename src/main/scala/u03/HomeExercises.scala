@@ -114,6 +114,10 @@ object HomeExercises extends App:
     case Cons(h, t) => f(h, foldRight(t)(df)(f))
 
 
+  //Exercise 7
+  val fibs: Stream[Int] = Stream.map(Stream.iterate((0, 1))((a, b) => (a, b) match
+    case (a, b) => (b, a + b))
+  )((a, _) => a)
 
 
 
