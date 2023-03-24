@@ -59,7 +59,7 @@ class HomeExercisesTest:
     assertEquals(Nil(), courses(Cons(Student("Luca", 1), Nil()))) // Nil()
 
 
-//Exercise 4
+  //Exercise 4
   @Test
   def testFolds() =
     import HomeExercises.foldLeft
@@ -69,3 +69,11 @@ class HomeExercisesTest:
     assertEquals(-15, foldLeft(lst)(1)(_ - _)) // -16
     assertEquals(-8, foldRight(lst)(0)(_ - _)) // -8
     assertEquals(-7, foldRight(lst)(1)(_ - _)) // -8
+
+
+  //Exercise 5
+  @Test
+  def testDropStream() =
+    import HomeExercises.Stream.*
+    val s = take(iterate(0)(_ + 1))(10)
+    assertEquals(Cons(6, Cons(7, Cons(8, Cons(9, Nil ())))), toList(drop(s)(6))) // => Cons(6, Cons(7, Cons(8, Cons(9, Nil ()))))
