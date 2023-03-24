@@ -61,7 +61,15 @@ object HomeExercises extends App:
     def flatMap[A, B](l: List[A])(f: A => List[B]): List[B] = (l, f) match
       case (Cons(h, Nil()), f) => f(h)
       case (Cons(h, t), f) => append(f(h), flatMap(t)(f))
-
+    //Point d
+    def mapFM[A, B](l: List[A])(mapper: A => B): List[B] = l match
+      case Cons(_, _) => flatMap(l)(h => Cons(mapper(h), Nil()))
+      case Nil() => Nil()
+    def filterFM[A](l1: List[A])(pred: A => Boolean): List[A] = l1 match
+      case Cons(_, _) => flatMap(l1)(h => pred(h) match
+        case true => Cons(h, Nil())
+        case _ => Nil()
+      )
 
   //Exercise 2
   import HomeExercises.Option.*
