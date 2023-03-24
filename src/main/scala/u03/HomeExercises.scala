@@ -1,34 +1,10 @@
 package u03
 
+
+
 import scala.annotation.tailrec
 
 object HomeExercises extends App:
-
-  enum Option[A]:
-    case Some(a: A)
-    case None()
-
-  object Option:
-    def isEmpty[A](opt: Option[A]): Boolean = opt match
-      case None() => true
-      case _ => false
-    def orElse[A, B >: A](opt: Option[A], orElse: B): B = opt match
-      case Some(a) => a
-      case _ => orElse
-    def flatMap[A, B](opt: Option[A])(f: A => Option[B]): Option[B] = opt match
-      case Some(a) => f(a)
-      case _ => None()
-
-
-  enum Person:
-    case Student(name: String, year: Int)
-    case Teacher(name: String, course: String)
-  object Person:
-    def name(p: Person): String = p match
-      case Student(n, _) => n
-      case Teacher(n, _) => n
-
-
   enum List[E]:
     case Cons(head: E, tail: List[E])
     case Nil()
@@ -101,13 +77,17 @@ object HomeExercises extends App:
       case (Cons(head, tail), 1) => tail()
       case (Cons(head, tail), n) if n > 0 => drop(tail())(n - 1)
       case _ => Empty()
+    //Exercise 6
+    def constant[A](const: => A): Stream[A] =
+      cons(const, constant(const))
 
   end Stream
 
 
   //Exercise 2
-  import HomeExercises.Option.*
-  import HomeExercises.List.*
+  import u02.Optionals.Option
+  import u02.Optionals.Option._
+  import HomeExercises.List._
   def max(l: List[Int]): Option[Int] = l match
     case Nil() => None()
     case Cons(h, Nil()) => Some(h)
@@ -115,7 +95,8 @@ object HomeExercises extends App:
 
 
   //Exercise 3
-  import HomeExercises.Person.*
+  import u02.Modules.Person._
+  import u02.Modules.Person
   def courses(l: List[Person]): List[String] = l match
     case Nil() => Nil()
     case _ => List.flatMap(l)(p => p match
