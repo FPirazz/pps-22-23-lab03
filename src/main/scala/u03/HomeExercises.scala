@@ -74,8 +74,8 @@ object HomeExercises extends App:
       cons(init, iterate(next(init))(next))
     //Exercise 5
     def drop[A](stream: Stream[A])(n: Int): Stream[A] = (stream, n) match
-      case (Cons(head, tail), 1) => tail()
-      case (Cons(head, tail), n) if n > 0 => drop(tail())(n - 1)
+      case (Cons(_, tail), 1) => tail()
+      case (Cons(_, tail), n) if n > 0 => drop(tail())(n - 1)
       case _ => Empty()
     //Exercise 6
     def constant[A](const: => A): Stream[A] =
